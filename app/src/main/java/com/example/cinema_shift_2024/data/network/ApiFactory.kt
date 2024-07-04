@@ -1,5 +1,7 @@
 package com.example.cinema_shift_2024.data.network
 
+import com.example.cinema_shift_2024.data.models.FilmResponse
+import com.example.cinema_shift_2024.data.models.FilmsResponse
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
@@ -33,6 +35,14 @@ class ApiFactory {
         HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
+
+    val apiService by lazy {
+        retrofit.create(ApiService::class.java)
+    }
+
+    suspend fun getFilms(): FilmsResponse = apiService.getFilmsList()
+
+    suspend fun getFilmById(filmId: String): FilmResponse = apiService.getFilmById(filmId)
 
     private companion object {
         const val BASE_URL = "https://shift-backend.onrender.com/"
