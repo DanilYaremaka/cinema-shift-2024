@@ -36,7 +36,7 @@ class ApiFactory {
             level = HttpLoggingInterceptor.Level.BODY
         }
 
-    val apiService by lazy {
+    private val apiService by lazy {
         retrofit.create(ApiService::class.java)
     }
 

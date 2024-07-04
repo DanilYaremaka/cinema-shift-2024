@@ -8,7 +8,7 @@ data class Film(
     val releaseDate: String,
     val actors: List<FilmPerson>,
     val directors: List<FilmPerson>,
-    val runtime: Number,
+    val runtime: Int,
     val ageRating: AgeRating,
     val genres: List<String>,
     val userRatings: UserRatings,

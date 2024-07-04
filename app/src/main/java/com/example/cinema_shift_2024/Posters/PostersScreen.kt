@@ -1,5 +1,6 @@
 package com.example.cinema_shift_2024.Posters
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
@@ -27,13 +28,12 @@ fun PostersScreen() {
     val repository = ApiFactory()
 
     LaunchedEffect(Unit) {
+        Log.d("Posters Screen", "Launched")
         loadFilms(repository, setPostersState = { postersState = it })
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
         Text(text = stringResource(id = R.string.posters_title))
-
-
 
         when (val state = postersState) {
             is PostersState.Initial,
@@ -41,6 +41,7 @@ fun PostersScreen() {
 
             is PostersState.Content -> ContentComponent(state.films, { })
             is PostersState.Failure -> ErrorComponent(state.message.orEmpty()) {
+                Log.d("Posters Screen", "Click on retry")
                 scope.loadFilms(repository, setPostersState = { postersState = it })
             }
         }
@@ -55,8 +56,9 @@ private fun CoroutineScope.loadFilms(
         setPostersState(PostersState.Loading)
 
         try {
-            val films = repository.getFilms()
-            setPostersState(PostersState.Content(films.films))
+            val filmsResponse = repository.getFilms()
+            Log.d("Posters Screen", filmsResponse.toString())
+            setPostersState(PostersState.Content(filmsResponse.films))
         } catch (ce: CancellationException) {
             throw ce
         } catch (ex: Exception) {
