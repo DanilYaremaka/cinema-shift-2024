@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">cinema-shift-2024</string>
+
+    <string name="error_title">Произошла ошибка</string>
+    <string name="error_try_again">Повторить</string>
+    <string name="error_unknown_error">Неизвестная ошибка</string>
+
+    <string name="posters_title">Афиша на сегодня</string>
 </resources>
