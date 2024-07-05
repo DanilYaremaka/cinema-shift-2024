@@ -1,5 +1,7 @@
 package com.example.cinema_shift_2024.data.models
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Film(
     val id: String,
     val name: String,
@@ -13,5 +15,5 @@ data class Film(
     val genres: List<String>,
     val userRatings: UserRatings,
     val img: String,
-    val country: Country?
+    val country: Country? = null
 )
