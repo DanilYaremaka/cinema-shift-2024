@@ -30,6 +30,7 @@ fun PostersScreen() {
     LaunchedEffect(Unit) {
         Log.d("Posters Screen", "Launched")
         loadFilms(repository, setPostersState = { postersState = it })
+
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -40,7 +41,7 @@ fun PostersScreen() {
             is PostersState.Loading -> LoadingComponent()
 
             is PostersState.Content -> ContentComponent(state.films, { })
-            is PostersState.Failure -> ErrorComponent(state.message.orEmpty()) {
+            is PostersState.Failure -> ErrorComponent(state.message) {
                 Log.d("Posters Screen", "Click on retry")
                 scope.loadFilms(repository, setPostersState = { postersState = it })
             }
