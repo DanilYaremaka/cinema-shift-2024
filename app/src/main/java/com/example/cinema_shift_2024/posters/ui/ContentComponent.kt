@@ -1,4 +1,4 @@
-package com.example.cinema_shift_2024.Posters
+package com.example.cinema_shift_2024.posters.ui
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
@@ -16,7 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.example.cinema_shift_2024.data.models.Film
+import com.example.cinema_shift_2024.posters.data.models.FilmModel
+import com.example.cinema_shift_2024.posters.domain.entity.Film
 
 @Composable
 fun ContentComponent(
