@@ -1,4 +1,5 @@
 package com.example.cinema_shift_2024.posters.domain.entity
+import com.example.cinema_shift_2024.common.UserRatings
 import kotlinx.serialization.Serializable
 
 @Serializable
