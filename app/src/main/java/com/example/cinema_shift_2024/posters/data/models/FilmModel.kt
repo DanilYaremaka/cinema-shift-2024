@@ -1,8 +1,9 @@
-package com.example.cinema_shift_2024.data.models
+package com.example.cinema_shift_2024.posters.data.models
+import com.example.cinema_shift_2024.common.UserRatings
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Film(
+data class FilmModel(
     val id: String,
     val name: String,
     val originalName: String,
