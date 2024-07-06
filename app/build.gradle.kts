@@ -76,6 +76,11 @@ dependencies {
     // Асинхронное программирование
     implementation(libs.kotlinx.coroutines.android)
 
+    // Dependency Injection Koin
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    implementation(libs.koin.compose)
+
     // Unit-тестирование
     testImplementation(libs.junit)
     implementation(libs.kotlinx.coroutines.test)
