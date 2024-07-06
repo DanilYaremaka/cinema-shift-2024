@@ -1,11 +1,10 @@
 package com.example.cinema_shift_2024.posters.data.converter
 
-import com.example.cinema_shift_2024.posters.data.models.AgeRating
+import com.example.cinema_shift_2024.common.UserRatings
 import com.example.cinema_shift_2024.posters.data.models.FilmModel
 import com.example.cinema_shift_2024.posters.domain.entity.Film
-import com.example.cinema_shift_2024.posters.domain.entity.UserRatings
 
-class PosterConverter {
+class PosterConverter() {
 
     fun convert(model: FilmModel): Film =
         Film(

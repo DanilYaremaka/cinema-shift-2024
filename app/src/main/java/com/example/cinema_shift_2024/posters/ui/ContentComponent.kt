@@ -46,6 +46,7 @@ fun FilmItem(
     }
 }
 
+
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun FilmCard(film: Film) {
@@ -53,7 +54,7 @@ fun FilmCard(film: Film) {
         Column {
             Text(text = film.name)
             GlideImage(
-                model = "https://shift-backend.onrender.com${film.img}",
+                model = film.img,
                 contentDescription = null
             )
             Text(text = film.userRatings.kinopoisk)
