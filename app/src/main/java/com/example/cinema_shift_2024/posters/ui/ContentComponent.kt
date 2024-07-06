@@ -1,5 +1,6 @@
 package com.example.cinema_shift_2024.posters.ui
 
+import android.graphics.drawable.Drawable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -12,11 +13,17 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.example.cinema_shift_2024.posters.data.models.FilmModel
+import com.bumptech.glide.integration.compose.Placeholder
+import com.example.cinema_shift_2024.R
 import com.example.cinema_shift_2024.posters.domain.entity.Film
 
 @Composable
@@ -50,14 +57,29 @@ fun FilmItem(
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun FilmCard(film: Film) {
-    Card(border = BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground)) {
-        Column {
-            Text(text = film.name)
-            GlideImage(
-                model = film.img,
-                contentDescription = null
-            )
-            Text(text = film.userRatings.kinopoisk)
-        }
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground),
+    ) {
+        Text(
+            textAlign = TextAlign.Center,
+            text = stringResource(
+                R.string.film_title_runtime_age,
+                film.name,
+                film.runtime,
+                film.ageRating
+            ),
+            fontWeight = FontWeight.ExtraBold
+        )
+        GlideImage(
+            model = film.img,
+            contentDescription = null,
+            alignment = Alignment.Center,
+            contentScale = ContentScale.FillWidth
+        )
+        Text(text = stringResource(R.string.kinopoisk_rating, film.userRatings.kinopoisk))
+        Text(text = stringResource(R.string.imdb_rating, film.userRatings.imdb))
+        Text(text = "${film.genres}")
+        Text(text = "${film.country}")
     }
 }

@@ -26,7 +26,6 @@ fun PostersScreen(
     val postersState by postersViewModel.state.collectAsState()
 
     LaunchedEffect(Unit) {
-        Log.d("Posters Screen", "Launched")
         postersViewModel.loadPosters()
     }
 
@@ -42,7 +41,6 @@ fun PostersScreen(
             }
 
             is PostersState.Failure -> ErrorComponent(state.message.orEmpty()) {
-                Log.d("Posters Screen", "Click on retry")
                 postersViewModel.loadPosters()
             }
         }
