@@ -1,7 +1,7 @@
-package com.example.cinema_shift_2024.data.network
+package com.example.cinema_shift_2024
 
-import com.example.cinema_shift_2024.data.models.FilmResponse
-import com.example.cinema_shift_2024.data.models.FilmsResponse
+import com.example.cinema_shift_2024.posters.data.models.FilmsResponse
+import com.example.cinema_shift_2024.posters.data.network.PostersApi
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
@@ -10,9 +10,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
-import java.util.concurrent.TimeUnit
 
-class ApiFactory {
+class NetworkModule {
 
     val retrofit = Retrofit.Builder()
         .client(provideOkHttpClientWithProgress())
@@ -22,9 +21,6 @@ class ApiFactory {
 
     private fun provideOkHttpClientWithProgress(): OkHttpClient =
         OkHttpClient().newBuilder()
-            .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
-            .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
-            .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
             .addInterceptor(provideLoggingInterceptor())
             .build()
 
@@ -36,18 +32,13 @@ class ApiFactory {
             level = HttpLoggingInterceptor.Level.BODY
         }
 
-    private val apiService by lazy {
-        retrofit.create(ApiService::class.java)
+    private val postersApi by lazy {
+        retrofit.create(PostersApi::class.java)
     }
 
-    suspend fun getFilms(): FilmsResponse = apiService.getFilmsList()
-
-    suspend fun getFilmById(filmId: String): FilmResponse = apiService.getFilmById(filmId)
+    suspend fun getFilms(): FilmsResponse = postersApi.getFilmsList()
 
     private companion object {
         const val BASE_URL = "https://shift-backend.onrender.com/"
-        const val CONNECT_TIMEOUT = 10L
-        const val WRITE_TIMEOUT = 10L
-        const val READ_TIMEOUT = 10L
     }
 }
