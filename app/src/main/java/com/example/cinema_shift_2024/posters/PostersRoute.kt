@@ -1,4 +1,4 @@
-package com.example.cinema_shift_2024.posters.presentation
+package com.example.cinema_shift_2024.posters
 
 import kotlinx.serialization.Serializable
 
