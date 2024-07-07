@@ -1,10 +1,10 @@
 package com.example.cinema_shift_2024.posters.data.converter
 
 import com.example.cinema_shift_2024.common.UserRatings
-import com.example.cinema_shift_2024.posters.data.models.FilmModel
+import com.example.cinema_shift_2024.posters.data.model.FilmModel
 import com.example.cinema_shift_2024.posters.domain.entity.Film
 
-class PosterConverter() {
+class PosterConverter(private val baseUrl: String) {
 
     fun convert(model: FilmModel): Film =
         Film(
@@ -16,12 +16,8 @@ class PosterConverter() {
                 kinopoisk = model.userRatings.kinopoisk,
                 imdb = model.userRatings.imdb
             ),
-            img = "${IMAGE_BASE_URL}${model.img}",
+            img = "${baseUrl}${model.img}",
             genres = model.genres,
             country = model.country?.name
         )
-
-    companion object {
-        private const val IMAGE_BASE_URL = "https://shift-backend.onrender.com"
-    }
 }

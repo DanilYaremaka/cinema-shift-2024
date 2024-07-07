@@ -1,4 +1,4 @@
-package com.example.cinema_shift_2024.posters.data.models
+package com.example.cinema_shift_2024.posters.data.model
 import com.example.cinema_shift_2024.common.UserRatings
 import kotlinx.serialization.Serializable
 

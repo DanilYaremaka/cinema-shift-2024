@@ -13,10 +13,13 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
+private const val BASE_URL = "https://shift-backend.onrender.com"
+
 val postersModule = module {
     single { get<Retrofit>().create(PostersApi::class.java) }
 
     singleOf(::PosterConverter)
+    single { PosterConverter(BASE_URL) }
     singleOf(::PostersRepositoryImpl) bind PostersRepository::class
 
     factoryOf(::GetListUseCase)
