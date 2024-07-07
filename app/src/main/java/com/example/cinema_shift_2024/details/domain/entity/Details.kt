@@ -1,6 +1,6 @@
 package com.example.cinema_shift_2024.details.domain.entity
 
-import com.example.cinema_shift_2024.common.UserRatings
+import com.example.cinema_shift_2024.common.data.model.UserRatings
 
 data class Details(
     val id: String,
@@ -15,5 +15,5 @@ data class Details(
     val genres: List<String>,
     val userRatings: UserRatings,
     val img: String,
-    val country: String
+    val country: String? = null
 )

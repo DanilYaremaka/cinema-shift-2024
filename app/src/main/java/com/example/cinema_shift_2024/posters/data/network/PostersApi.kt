@@ -7,5 +7,4 @@ interface PostersApi {
 
     @GET("cinema/today")
     suspend fun getFilmsList(): FilmsResponse
-
 }

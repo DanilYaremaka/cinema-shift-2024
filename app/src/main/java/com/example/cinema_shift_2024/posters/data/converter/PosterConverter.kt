@@ -1,7 +1,7 @@
 package com.example.cinema_shift_2024.posters.data.converter
 
-import com.example.cinema_shift_2024.common.UserRatings
-import com.example.cinema_shift_2024.posters.data.model.FilmModel
+import com.example.cinema_shift_2024.common.data.model.FilmModel
+import com.example.cinema_shift_2024.common.data.model.UserRatings
 import com.example.cinema_shift_2024.posters.domain.entity.Film
 
 class PosterConverter(private val baseUrl: String) {
