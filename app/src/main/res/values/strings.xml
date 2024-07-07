@@ -10,4 +10,11 @@
     <string name="film_title_runtime_age">%1$s - %2$s минут. %3$s</string>
     <string name="kinopoisk_rating">Оценка на Кинопоиск: %1$s</string>
     <string name="imdb_rating">Оценка на IMDB: %1$s</string>
+    <string name="show_schedule">Посмотреть расписание</string>
+    <string name="realise_date">Дата выхода - %1$s</string>
+    <string name="actors">Актёры: %1$s</string>
+    <string name="directors">Режиссёр: %1$s</string>
+    <string name="country">Страна - %1$s</string>
+    <string name="unknown_country">Страна неизвестна</string>
+    <string name="genres">Жанры: %1$s</string>
 </resources>
