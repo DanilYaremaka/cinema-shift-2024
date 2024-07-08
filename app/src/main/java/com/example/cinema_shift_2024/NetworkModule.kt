@@ -5,17 +5,22 @@ import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.kotlinx.serialization.asConverterFactory
 
-const val BASE_URL = "https://shift-backend.onrender.com/"
 
 val networkModule = module {
+
+    single<String>(qualifier = named("baseUrl")) {
+        "https://shift-backend.onrender.com"
+    }
+
     single {
         Retrofit.Builder()
             .client(get())
-            .baseUrl(BASE_URL)
+            .baseUrl(get<String>(named(name = "baseUrl")))
             .addConverterFactory(get())
             .build()
     }

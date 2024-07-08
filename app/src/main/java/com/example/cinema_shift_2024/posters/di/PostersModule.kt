@@ -9,16 +9,15 @@ import com.example.cinema_shift_2024.posters.presentation.PostersViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
+import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
-private const val BASE_URL = "https://shift-backend.onrender.com"
-
 val postersModule = module {
     single { get<Retrofit>().create(PostersApi::class.java) }
 
-    single { PosterConverter(BASE_URL) }
+    single { PosterConverter(get<String>(named(name = "baseUrl"))) }
     singleOf(::PostersRepositoryImpl) bind PostersRepository::class
 
     factoryOf(::GetListUseCase)

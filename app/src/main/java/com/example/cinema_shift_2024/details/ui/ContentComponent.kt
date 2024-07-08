@@ -16,17 +16,21 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.cinema_shift_2024.R
@@ -66,13 +70,15 @@ fun ContentComponent(
         FloatingActionButton(
             onClick = { /*TODO*/ },
             modifier = Modifier
-                .padding(16.dp)
+                .padding(32.dp)
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
         ) {
             Text(
                 text = stringResource(R.string.show_schedule),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold
             )
         }
     }
@@ -83,14 +89,13 @@ fun FilmInfo(details: Details) {
     Column(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
-            .padding(start = 8.dp, end = 8.dp)
     ) {
         GlideImage(
             model = details.img,
             contentDescription = null,
             modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop
         )
         TextSample(text = details.description)
         TextSample(
@@ -118,6 +123,10 @@ fun FilmInfo(details: Details) {
                 details.country ?: stringResource(R.string.unknown_country)
             )
         )
+        HorizontalDivider(
+            thickness = 96.dp,
+            color = MaterialTheme.colorScheme.background
+        )
     }
 }
 
@@ -126,7 +135,7 @@ fun TextSample(text: String) {
     Text(
         text = text,
         modifier = Modifier
-            .padding(top = 8.dp)
+            .padding(top = 8.dp, start = 8.dp, end = 8.dp)
     )
 }
 

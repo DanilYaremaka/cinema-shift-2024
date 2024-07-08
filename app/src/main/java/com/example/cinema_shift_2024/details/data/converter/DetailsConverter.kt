@@ -27,13 +27,6 @@ class DetailsConverter(private val baseUrl: String) {
             releaseDate = model.releaseDate
         )
 
-    private fun getPersonList(persons: List<FilmPerson>): List<String> {
-        val result = mutableListOf<String>()
-
-        for (person in persons) {
-            result.add(person.fullName)
-        }
-
-        return result
-    }
+    private fun getPersonList(persons: List<FilmPerson>): List<String> =
+        persons.map {it.fullName}
 }
