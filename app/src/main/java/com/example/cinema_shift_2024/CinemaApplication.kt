@@ -2,6 +2,7 @@ package com.example.cinema_shift_2024
 
 import android.app.Application
 import com.example.cinema_shift_2024.details.di.detailsModule
+import com.example.cinema_shift_2024.main.di.mainModule
 import com.example.cinema_shift_2024.navigation.navigationModule
 import com.example.cinema_shift_2024.posters.di.postersModule
 import org.koin.android.ext.koin.androidContext
@@ -21,7 +22,8 @@ class CinemaApplication: Application() {
                 networkModule,
                 postersModule,
                 detailsModule,
-                navigationModule
+                navigationModule,
+                mainModule
             )
         }
     }

@@ -18,4 +18,7 @@
     <string name="unknown_country">Страна неизвестна</string>
     <string name="genres">Жанры: %1$s</string>
     <string name="show_details">Подробнее</string>
+    <string name="tickets_title">Билеты</string>
+    <string name="bot_nav_posters">Афиша</string>
+    <string name="bot_nav_tickets">Билеты</string>
 </resources>

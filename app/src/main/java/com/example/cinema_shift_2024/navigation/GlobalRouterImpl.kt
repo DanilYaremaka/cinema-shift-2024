@@ -11,7 +11,11 @@ class GlobalRouterImpl: GlobalRouter, NavControllerHolder {
     }
 
     override fun openPoppingAllPrevious(route: Any) {
-        TODO("Not yet implemented")
+        val navController = navController ?: return
+        navController.navigate(route) {
+            popUpTo(navController.graph.startDestinationId)
+            launchSingleTop = true
+        }
     }
 
     override fun pop() {
