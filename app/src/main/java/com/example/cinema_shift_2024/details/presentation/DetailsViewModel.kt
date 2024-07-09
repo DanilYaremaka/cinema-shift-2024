@@ -18,6 +18,10 @@ class DetailsViewModel(
     val state: StateFlow<DetailsState> = _state
 
     fun loadDetails() {
+        if (_state.value is DetailsState.Content || _state.value is DetailsState.Loading) {
+            return
+        }
+
         viewModelScope.launch {
             _state.value = DetailsState.Loading
 

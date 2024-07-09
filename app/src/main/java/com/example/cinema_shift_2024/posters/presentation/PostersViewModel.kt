@@ -17,6 +17,9 @@ class PostersViewModel(
     val state: StateFlow<PostersState> = _state
 
     fun loadPosters() {
+        if (_state.value is PostersState.Content || _state.value is PostersState.Loading)
+            return
+
         viewModelScope.launch {
             _state.value = PostersState.Loading
 
@@ -29,6 +32,11 @@ class PostersViewModel(
                 _state.value = PostersState.Failure(ex.localizedMessage.orEmpty())
             }
         }
+    }
+
+    fun reloadPosters() {
+        _state.value = PostersState.Initial
+        loadPosters()
     }
 
     fun openDetails(filmId: String) {
