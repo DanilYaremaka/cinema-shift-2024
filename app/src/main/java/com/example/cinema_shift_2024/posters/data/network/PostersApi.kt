@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface PostersApi {
 
-    @GET("cinema/today")
+    @GET("/cinema/today")
     suspend fun getFilmsList(): FilmsResponse
 }

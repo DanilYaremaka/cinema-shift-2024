@@ -14,12 +14,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.cinema_shift_2024.R
@@ -48,7 +48,7 @@ fun FilmItem(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp, horizontal = 16.dp)
+            .padding(vertical = 8.dp, horizontal = 8.dp)
     ) {
         FilmCard(
             film = film,
@@ -77,7 +77,9 @@ fun FilmCard(
                 film.runtime,
                 film.ageRating
             ),
-            fontWeight = FontWeight.ExtraBold
+            fontWeight = FontWeight.ExtraBold,
+            modifier = Modifier.padding(start = 4.dp),
+            fontSize = 32.sp,
         )
         GlideImage(
             model = film.img,
@@ -85,16 +87,26 @@ fun FilmCard(
             alignment = Alignment.Center,
             contentScale = ContentScale.FillWidth
         )
-        Text(text = stringResource(R.string.kinopoisk_rating, film.userRatings.kinopoisk))
-        Text(text = stringResource(R.string.imdb_rating, film.userRatings.imdb))
-        Text(text = "${film.genres}")
-        Text(text = "${film.country}")
+        TextSample(text = stringResource(R.string.kinopoisk_rating, film.userRatings.kinopoisk))
+        TextSample(text = stringResource(R.string.imdb_rating, film.userRatings.imdb))
+        TextSample(text = textForList(film.genres))
+        TextSample(text = "${film.country}")
         Button(
             onClick = onItemSelected,
             modifier = Modifier.fillMaxWidth(),
-            shape = RectangleShape
         ) {
-            Text(text = "Подробнее")
+            Text(text = stringResource(R.string.show_details))
         }
     }
 }
+
+@Composable
+fun TextSample(text: String) {
+    Text(
+        text = text,
+        Modifier.padding(start = 4.dp, end = 4.dp)
+    )
+}
+
+private fun textForList(list: List<String>): String =
+    list.joinToString(separator = ", ")

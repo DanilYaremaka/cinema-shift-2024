@@ -9,13 +9,17 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.cancellation.CancellationException
 
 class PostersViewModel(
-    private val getListUseCase: GetListUseCase
+    private val getListUseCase: GetListUseCase,
+    private val router: PostersRouter
 ): ViewModel() {
 
     private val _state = MutableStateFlow<PostersState>(PostersState.Initial)
     val state: StateFlow<PostersState> = _state
 
     fun loadPosters() {
+        if (_state.value is PostersState.Content || _state.value is PostersState.Loading)
+            return
+
         viewModelScope.launch {
             _state.value = PostersState.Loading
 
@@ -28,5 +32,14 @@ class PostersViewModel(
                 _state.value = PostersState.Failure(ex.localizedMessage.orEmpty())
             }
         }
+    }
+
+    fun reloadPosters() {
+        _state.value = PostersState.Initial
+        loadPosters()
+    }
+
+    fun openDetails(filmId: String) {
+        router.openDetails(filmId)
     }
 }

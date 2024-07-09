@@ -9,22 +9,21 @@ import com.example.cinema_shift_2024.details.presentation.DetailsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
+import org.koin.core.qualifier.named
 import org.koin.dsl.bind
 import org.koin.dsl.module
 import retrofit2.Retrofit
-
-private const val BASE_URL = "https://shift-backend.onrender.com"
 
 var detailsModule = module {
 
     single { get<Retrofit>().create(DetailsApi::class.java) }
 
-    single { DetailsConverter(BASE_URL) }
+    single { DetailsConverter(get<String>(named(name = "baseUrl"))) }
     singleOf(::DetailsRepositoryImpl) bind DetailsRepository::class
 
     factoryOf(::GetDetailsUseCase)
 
     viewModel {(filmId: String) ->
-        DetailsViewModel(filmId, get())
+        DetailsViewModel(filmId, get(), get())
     }
 }

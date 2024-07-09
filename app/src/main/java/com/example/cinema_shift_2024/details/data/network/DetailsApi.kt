@@ -6,6 +6,6 @@ import retrofit2.http.Path
 
 interface DetailsApi {
 
-    @GET("cinema/film/{filmId}")
+    @GET("/cinema/film/{filmId}")
     suspend fun getFilmById(@Path("filmId") filmId: String): FilmResponse
 }

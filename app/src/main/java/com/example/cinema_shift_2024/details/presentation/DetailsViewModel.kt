@@ -10,13 +10,18 @@ import kotlin.coroutines.cancellation.CancellationException
 
 class DetailsViewModel(
     private val filmId: String,
-    private val getDetailsUseCase: GetDetailsUseCase
+    private val getDetailsUseCase: GetDetailsUseCase,
+    private val router: DetailsRouter
 ): ViewModel() {
 
     private val _state = MutableStateFlow<DetailsState>(DetailsState.Initial)
     val state: StateFlow<DetailsState> = _state
 
     fun loadDetails() {
+        if (_state.value is DetailsState.Content || _state.value is DetailsState.Loading) {
+            return
+        }
+
         viewModelScope.launch {
             _state.value = DetailsState.Loading
 
@@ -29,5 +34,9 @@ class DetailsViewModel(
                 _state.value = DetailsState.Failure(ex.message)
             }
         }
+    }
+
+    fun goBack() {
+        router.goBack()
     }
 }
