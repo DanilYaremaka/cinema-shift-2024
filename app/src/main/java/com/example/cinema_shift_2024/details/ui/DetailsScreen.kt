@@ -12,8 +12,7 @@ import com.example.cinema_shift_2024.details.presentation.DetailsViewModel
 
 @Composable
 fun DetailsScreen(
-    viewModel: DetailsViewModel,
-    onBackArrowPressed: () -> Unit
+    viewModel: DetailsViewModel
 ) {
 
     val detailsState by viewModel.state.collectAsState()
@@ -37,7 +36,7 @@ fun DetailsScreen(
 
             is DetailsState.Content -> ContentComponent(
                 details = state.details,
-                onBackArrowPressed = onBackArrowPressed
+                onBackArrowPressed = viewModel::goBack
             )
         }
     }

@@ -9,7 +9,8 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.cancellation.CancellationException
 
 class PostersViewModel(
-    private val getListUseCase: GetListUseCase
+    private val getListUseCase: GetListUseCase,
+    private val router: PostersRouter
 ): ViewModel() {
 
     private val _state = MutableStateFlow<PostersState>(PostersState.Initial)
@@ -28,5 +29,9 @@ class PostersViewModel(
                 _state.value = PostersState.Failure(ex.localizedMessage.orEmpty())
             }
         }
+    }
+
+    fun openDetails(filmId: String) {
+        router.openDetails(filmId)
     }
 }

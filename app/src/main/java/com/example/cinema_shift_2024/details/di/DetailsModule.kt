@@ -24,6 +24,6 @@ var detailsModule = module {
     factoryOf(::GetDetailsUseCase)
 
     viewModel {(filmId: String) ->
-        DetailsViewModel(filmId, get())
+        DetailsViewModel(filmId, get(), get())
     }
 }

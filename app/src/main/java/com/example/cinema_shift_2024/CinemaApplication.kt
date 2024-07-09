@@ -2,6 +2,7 @@ package com.example.cinema_shift_2024
 
 import android.app.Application
 import com.example.cinema_shift_2024.details.di.detailsModule
+import com.example.cinema_shift_2024.navigation.navigationModule
 import com.example.cinema_shift_2024.posters.di.postersModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -19,7 +20,8 @@ class CinemaApplication: Application() {
             modules(
                 networkModule,
                 postersModule,
-                detailsModule
+                detailsModule,
+                navigationModule
             )
         }
     }

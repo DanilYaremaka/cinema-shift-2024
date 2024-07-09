@@ -18,8 +18,7 @@ import com.example.cinema_shift_2024.posters.presentation.PostersViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PostersScreen(
-    postersViewModel: PostersViewModel,
-    onItemSelected: (filmId: String) -> Unit
+    postersViewModel: PostersViewModel
 ) {
 
     val postersState by postersViewModel.state.collectAsState()
@@ -38,7 +37,7 @@ fun PostersScreen(
 
             is PostersState.Content -> ContentComponent(
                 films =  state.films,
-                onItemSelected = onItemSelected)
+                onItemSelected = postersViewModel::openDetails)
 
             is PostersState.Failure -> ErrorComponent(
                 message = state.message.orEmpty(),
