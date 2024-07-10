@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_title">Произошла ошибка</string>
+    <string name="error_try_again">Повторить</string>
+    <string name="error_unknown_error">Неизвестная ошибка</string>
+    <string name="fail_to_load_image">Ошибка при загрузке</string>
+    <string name="unknown_country">Страна неизвестна</string>
+</resources>

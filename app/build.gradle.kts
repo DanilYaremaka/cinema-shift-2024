@@ -51,6 +51,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":shared"))
+    implementation(project(":design:resources"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

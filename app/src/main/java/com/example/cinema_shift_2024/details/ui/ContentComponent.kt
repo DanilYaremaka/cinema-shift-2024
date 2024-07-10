@@ -34,6 +34,7 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.cinema_shift_2024.R
 import com.example.cinema_shift_2024.details.domain.entity.Details
+import com.example.shared.R as sharedR
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -118,7 +119,7 @@ fun FilmInfo(details: Details) {
         TextSample(
             text = stringResource(
                 R.string.country,
-                details.country ?: stringResource(R.string.unknown_country)
+                details.country ?: stringResource(sharedR.string.unknown_country)
             )
         )
         HorizontalDivider(

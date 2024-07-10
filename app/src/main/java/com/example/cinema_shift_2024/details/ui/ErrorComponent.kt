@@ -6,7 +6,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.example.cinema_shift_2024.R
+import com.example.shared.R
 
 @Composable
 fun ErrorComponent(message: String, onRetry: () -> Unit) {

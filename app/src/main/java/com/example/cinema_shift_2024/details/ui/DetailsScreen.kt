@@ -6,9 +6,9 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
-import com.example.cinema_shift_2024.R
 import com.example.cinema_shift_2024.details.presentation.DetailsState
 import com.example.cinema_shift_2024.details.presentation.DetailsViewModel
+import com.example.shared.R as sharedR
 
 @Composable
 fun DetailsScreen(
@@ -28,7 +28,7 @@ fun DetailsScreen(
             is DetailsState.Loading -> LoadingComponent()
 
             is DetailsState.Failure -> ErrorComponent(
-                message = state.message ?: stringResource(id = R.string.error_unknown_error),
+                message = state.message ?: stringResource(id = sharedR.string.error_unknown_error),
                 onRetry = {
                     viewModel.loadDetails()
                 }

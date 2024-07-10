@@ -1,5 +1,4 @@
 package com.example.cinema_shift_2024.posters.domain.entity
-import com.example.cinema_shift_2024.common.data.model.UserRatings
 
 data class Film(
     val id: String,
@@ -7,7 +6,7 @@ data class Film(
     val runtime: Int,
     val ageRating: String,
     val genres: List<String>,
-    val userRatings: UserRatings,
+    val userRatings: com.example.shared.data.model.UserRatings,
     val img: String,
     val country: String? = null
 )
