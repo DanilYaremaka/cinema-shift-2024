@@ -55,6 +55,7 @@ dependencies {
     implementation(project(":design:resources"))
     implementation(project(":feature:posters"))
     implementation(project(":feature:details"))
+    implementation(project(":feature:tickets"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
