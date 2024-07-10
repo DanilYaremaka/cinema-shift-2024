@@ -23,3 +23,5 @@ rootProject.name = "cinema-shift-2024"
 include(":app")
 include(":shared")
 include(":design:resources")
+include(":feature:posters")
+

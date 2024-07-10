@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="posters_title">Афиша на сегодня</string>
+    <string name="film_title_runtime_age">%1$s - %2$s минут. %3$s</string>
+    <string name="kinopoisk_rating">Оценка на Кинопоиск: %1$s</string>
+    <string name="imdb_rating">Оценка на IMDB: %1$s</string>
+    <string name="show_details">Подробнее</string>
+</resources>
