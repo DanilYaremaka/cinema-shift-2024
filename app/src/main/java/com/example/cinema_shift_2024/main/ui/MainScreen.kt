@@ -25,12 +25,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.example.cinema_shift_2024.R
-import com.example.cinema_shift_2024.details.DetailsRoute
 import com.example.cinema_shift_2024.details.ui.DetailsScreen
+import com.example.cinema_shift_2024.feature.posters.PostersRoute
 import com.example.cinema_shift_2024.main.presentation.MainViewModel
 import com.example.cinema_shift_2024.main.presentation.NavigationOption
 import com.example.cinema_shift_2024.navigation.NavControllerHolder
-import com.example.cinema_shift_2024.posters.PostersRoute
 import com.example.cinema_shift_2024.posters.ui.PostersScreen
 import com.example.cinema_shift_2024.tickets.TicketsRoute
 import com.example.cinema_shift_2024.tickets.ui.TicketsScreen
@@ -70,8 +69,8 @@ fun MainScreen() {
                         postersViewModel = koinViewModel()
                     )
                 }
-                animatedComposable<DetailsRoute> {
-                    val destination = it.toRoute<DetailsRoute>()
+                animatedComposable<com.example.cinema_shift_2024.details.DetailsRoute> {
+                    val destination = it.toRoute<com.example.cinema_shift_2024.details.DetailsRoute>()
                     DetailsScreen(
                         viewModel = koinViewModel { parametersOf(destination.filmId) }
                     )

@@ -51,6 +51,11 @@ android {
 }
 
 dependencies {
+    implementation(project(":shared"))
+    implementation(project(":design:resources"))
+    implementation(project(":feature:posters"))
+    implementation(project(":feature:details"))
+    implementation(project(":feature:tickets"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
