@@ -1,4 +1,4 @@
-package com.example.cinema_shift_2024.ui.theme
+package com.example.resources.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
