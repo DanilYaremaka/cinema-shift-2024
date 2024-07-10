@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
-import com.example.cinema_shift_2024.R
+import com.example.cinema_shift_2024.details.R
 import com.example.cinema_shift_2024.details.domain.entity.Details
 import com.example.shared.R as sharedR
 

@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.cinema_shift_2024.resources"
+    namespace = "com.example.cinema_shift_2024.posters"
     compileSdk = 34
 
     defaultConfig {

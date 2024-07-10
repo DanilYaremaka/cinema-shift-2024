@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.example.cinema_shift_2024.feature.posters.domain.entity.Film
-import com.example.cinema_shift_2024.resources.R
+import com.example.cinema_shift_2024.posters.R
 
 @Composable
 fun ContentComponent(

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="realise_date">Дата выхода - %1$s</string>
+    <string name="actors">Актёры: %1$s</string>
+    <string name="directors">Режиссёр: %1$s</string>
+    <string name="country">Страна - %1$s</string>
+    <string name="genres">Жанры: %1$s</string>
+    <string name="show_schedule">Посмотреть расписание</string>
+</resources>

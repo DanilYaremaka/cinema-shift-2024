@@ -1,16 +1,6 @@
 <resources>
     <string name="app_name">cinema-shift-2024</string>
 
-
-
-
-    <string name="realise_date">Дата выхода - %1$s</string>
-    <string name="actors">Актёры: %1$s</string>
-    <string name="directors">Режиссёр: %1$s</string>
-    <string name="country">Страна - %1$s</string>
-    <string name="genres">Жанры: %1$s</string>
-    <string name="show_schedule">Посмотреть расписание</string>
-
     <string name="bot_nav_posters">Афиша</string>
     <string name="bot_nav_tickets">Билеты</string>
 </resources>

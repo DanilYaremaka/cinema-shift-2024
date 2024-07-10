@@ -25,3 +25,4 @@ include(":shared")
 include(":design:resources")
 include(":feature:posters")
 
+include(":feature:details")
