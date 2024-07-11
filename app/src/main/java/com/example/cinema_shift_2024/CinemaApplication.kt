@@ -5,6 +5,7 @@ import com.example.cinema_shift_2024.details.di.detailsModule
 import com.example.cinema_shift_2024.feature.posters.di.postersModule
 import com.example.cinema_shift_2024.main.di.mainModule
 import com.example.cinema_shift_2024.navigation.navigationModule
+import com.example.cinema_shift_2024.schedule.di.scheduleModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -23,7 +24,8 @@ class CinemaApplication: Application() {
                 postersModule,
                 detailsModule,
                 navigationModule,
-                mainModule
+                mainModule,
+                scheduleModule
             )
         }
     }

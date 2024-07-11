@@ -36,7 +36,8 @@ fun DetailsScreen(
 
             is DetailsState.Content -> ContentComponent(
                 details = state.details,
-                onBackArrowPressed = viewModel::goBack
+                onBackArrowPressed = viewModel::goBack,
+                onOpenSchedulePressed = viewModel::openSchedule
             )
         }
     }

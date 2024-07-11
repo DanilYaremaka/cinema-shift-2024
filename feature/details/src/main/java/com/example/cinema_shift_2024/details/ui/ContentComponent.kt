@@ -40,7 +40,8 @@ import com.example.shared.R as sharedR
 @Composable
 fun ContentComponent(
     details: Details,
-    onBackArrowPressed: () -> Unit
+    onBackArrowPressed: () -> Unit,
+    onOpenSchedulePressed: (filmId: String) -> Unit
 ) {
     TopAppBar(title = {
         Row(
@@ -67,7 +68,7 @@ fun ContentComponent(
         FilmInfo(details = details)
 
         FloatingActionButton(
-            onClick = { /*TODO*/ },
+            onClick = { onOpenSchedulePressed(details.id) },
             modifier = Modifier
                 .padding(32.dp)
                 .fillMaxWidth()
