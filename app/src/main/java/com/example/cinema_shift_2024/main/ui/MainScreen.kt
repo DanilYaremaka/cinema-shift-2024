@@ -82,7 +82,10 @@ fun MainScreen() {
                     TicketsScreen()
                 }
                 animatedComposable<ScheduleRoute> {
-                    ScheduleScreen()
+                    val destination = it.toRoute<ScheduleRoute>()
+                    ScheduleScreen(
+                        viewModel = koinViewModel { parametersOf(destination.filmId)}
+                    )
                 }
             }
 
