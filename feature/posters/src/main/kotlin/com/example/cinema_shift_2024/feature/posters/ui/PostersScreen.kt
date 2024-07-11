@@ -25,6 +25,8 @@ import androidx.compose.ui.unit.dp
 import com.example.cinema_shift_2024.feature.posters.presentation.PostersState
 import com.example.cinema_shift_2024.feature.posters.presentation.PostersViewModel
 import com.example.cinema_shift_2024.posters.R
+import com.example.shared.ui.ErrorComponent
+import com.example.shared.ui.LoadingComponent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

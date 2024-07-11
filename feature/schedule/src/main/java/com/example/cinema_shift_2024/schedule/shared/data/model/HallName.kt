@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 enum class HallName {
-    RED,
-    GREEN,
-    BLUE
+    Red,
+    Green,
+    Blue
 }

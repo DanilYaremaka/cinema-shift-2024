@@ -1,4 +1,4 @@
-package com.example.cinema_shift_2024.posters.ui
+package com.example.shared.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
