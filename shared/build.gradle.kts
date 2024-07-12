@@ -50,8 +50,4 @@ dependencies {
 
     // Сериализация JSON
     implementation(libs.kotlinx.serialization.json)
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
