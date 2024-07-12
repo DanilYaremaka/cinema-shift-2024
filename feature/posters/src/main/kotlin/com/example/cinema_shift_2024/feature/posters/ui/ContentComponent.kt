@@ -91,11 +91,18 @@ fun FilmCard(
         TextSample(text = stringResource(R.string.imdb_rating, film.userRatings.imdb))
         TextSample(text = textForList(film.genres))
         TextSample(text = "${film.country}")
+
         Button(
             onClick = onItemSelected,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .padding(4.dp)
+                .fillMaxWidth()
         ) {
-            Text(text = stringResource(R.string.show_details))
+            Text(
+                text = stringResource(R.string.show_details),
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }
