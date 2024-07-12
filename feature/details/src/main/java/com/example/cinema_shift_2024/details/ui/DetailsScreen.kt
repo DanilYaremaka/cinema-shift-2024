@@ -8,6 +8,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import com.example.cinema_shift_2024.details.presentation.DetailsState
 import com.example.cinema_shift_2024.details.presentation.DetailsViewModel
+import com.example.shared.ui.ErrorComponent
+import com.example.shared.ui.LoadingComponent
 import com.example.shared.R as sharedR
 
 @Composable
@@ -36,7 +38,8 @@ fun DetailsScreen(
 
             is DetailsState.Content -> ContentComponent(
                 details = state.details,
-                onBackArrowPressed = viewModel::goBack
+                onBackArrowPressed = viewModel::goBack,
+                onOpenSchedulePressed = viewModel::openSchedule
             )
         }
     }

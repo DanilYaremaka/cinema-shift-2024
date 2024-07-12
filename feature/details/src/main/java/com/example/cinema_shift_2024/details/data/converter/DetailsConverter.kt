@@ -1,10 +1,12 @@
 package com.example.cinema_shift_2024.details.data.converter
 
 import com.example.cinema_shift_2024.details.domain.entity.Details
+import com.example.shared.data.model.FilmModel
+import com.example.shared.data.model.FilmPerson
 
 class DetailsConverter(private val baseUrl: String) {
 
-    fun convert(model: com.example.shared.data.model.FilmModel): Details =
+    fun convert(model: FilmModel): Details =
         Details(
             id = model.id,
             name = model.name,
@@ -24,6 +26,6 @@ class DetailsConverter(private val baseUrl: String) {
             releaseDate = model.releaseDate
         )
 
-    private fun getPersonList(persons: List<com.example.shared.data.model.FilmPerson>): List<String> =
+    private fun getPersonList(persons: List<FilmPerson>): List<String> =
         persons.map {it.fullName}
 }

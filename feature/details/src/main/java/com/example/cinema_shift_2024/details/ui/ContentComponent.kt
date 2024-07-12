@@ -14,8 +14,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -40,7 +40,8 @@ import com.example.shared.R as sharedR
 @Composable
 fun ContentComponent(
     details: Details,
-    onBackArrowPressed: () -> Unit
+    onBackArrowPressed: () -> Unit,
+    onOpenSchedulePressed: (filmId: String) -> Unit
 ) {
     TopAppBar(title = {
         Row(
@@ -66,8 +67,8 @@ fun ContentComponent(
     ) {
         FilmInfo(details = details)
 
-        FloatingActionButton(
-            onClick = { /*TODO*/ },
+        Button(
+            onClick = { onOpenSchedulePressed(details.id) },
             modifier = Modifier
                 .padding(32.dp)
                 .fillMaxWidth()
@@ -123,7 +124,7 @@ fun FilmInfo(details: Details) {
             )
         )
         HorizontalDivider(
-            thickness = 96.dp,
+            thickness = 80.dp,
             color = MaterialTheme.colorScheme.background
         )
     }

@@ -21,10 +21,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.cinema_shift_2024.feature.posters.presentation.PostersState
 import com.example.cinema_shift_2024.feature.posters.presentation.PostersViewModel
 import com.example.cinema_shift_2024.posters.R
+import com.example.shared.ui.ErrorComponent
+import com.example.shared.ui.LoadingComponent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,7 +63,11 @@ fun PostersScreen(
                         .padding(end = 8.dp),
                     horizontalArrangement = Arrangement.Absolute.SpaceBetween
                 ) {
-                    Text(text = stringResource(id = R.string.posters_title))
+                    Text(
+                        text = stringResource(id = R.string.posters_title),
+                        fontWeight = FontWeight.ExtraBold,
+                        textAlign = TextAlign.Center,
+                    )
                     Icon(
                         imageVector = Icons.Default.Refresh,
                         contentDescription = null,

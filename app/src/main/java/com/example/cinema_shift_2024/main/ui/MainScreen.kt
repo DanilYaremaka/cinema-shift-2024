@@ -25,12 +25,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
 import com.example.cinema_shift_2024.R
+import com.example.cinema_shift_2024.details.DetailsRoute
 import com.example.cinema_shift_2024.details.ui.DetailsScreen
 import com.example.cinema_shift_2024.feature.posters.PostersRoute
 import com.example.cinema_shift_2024.main.presentation.MainViewModel
 import com.example.cinema_shift_2024.main.presentation.NavigationOption
 import com.example.cinema_shift_2024.navigation.NavControllerHolder
 import com.example.cinema_shift_2024.posters.ui.PostersScreen
+import com.example.cinema_shift_2024.schedule.ScheduleRoute
+import com.example.cinema_shift_2024.schedule.ui.ScheduleScreen
 import com.example.cinema_shift_2024.tickets.TicketsRoute
 import com.example.cinema_shift_2024.tickets.ui.TicketsScreen
 import org.koin.androidx.compose.koinViewModel
@@ -69,14 +72,20 @@ fun MainScreen() {
                         postersViewModel = koinViewModel()
                     )
                 }
-                animatedComposable<com.example.cinema_shift_2024.details.DetailsRoute> {
-                    val destination = it.toRoute<com.example.cinema_shift_2024.details.DetailsRoute>()
+                animatedComposable<DetailsRoute> {
+                    val destination = it.toRoute<DetailsRoute>()
                     DetailsScreen(
                         viewModel = koinViewModel { parametersOf(destination.filmId) }
                     )
                 }
                 animatedComposable<TicketsRoute> {
                     TicketsScreen()
+                }
+                animatedComposable<ScheduleRoute> {
+                    val destination = it.toRoute<ScheduleRoute>()
+                    ScheduleScreen(
+                        viewModel = koinViewModel { parametersOf(destination.filmId)}
+                    )
                 }
             }
 

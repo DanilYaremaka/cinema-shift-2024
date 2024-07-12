@@ -39,4 +39,8 @@ class DetailsViewModel(
     fun goBack() {
         router.goBack()
     }
+
+    fun openSchedule(filmId: String) {
+        router.openSchedule(filmId)
+    }
 }

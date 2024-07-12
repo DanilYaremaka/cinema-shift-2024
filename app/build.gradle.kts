@@ -56,6 +56,7 @@ dependencies {
     implementation(project(":feature:posters"))
     implementation(project(":feature:details"))
     implementation(project(":feature:tickets"))
+    implementation(project(":feature:schedule"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

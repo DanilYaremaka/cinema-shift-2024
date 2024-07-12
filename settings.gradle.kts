@@ -27,3 +27,4 @@ include(":feature:posters")
 
 include(":feature:details")
 include(":feature:tickets")
+include(":feature:schedule")
