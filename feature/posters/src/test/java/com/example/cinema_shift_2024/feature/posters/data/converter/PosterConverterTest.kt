@@ -10,7 +10,8 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class PosterConverterTest {
-    private val converter = PosterConverter(baseUrl = "https://shift-backend.onrender.com")
+    private val baseUrl = "https://shift-backend.onrender.com"
+    private val converter = PosterConverter(baseUrl)
 
     @Test
     fun `convert film model EXPECT film`() {
