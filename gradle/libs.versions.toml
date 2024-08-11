@@ -3,7 +3,10 @@ agp = "8.5.0"
 compose = "1.0.0-beta01"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
-junit = "4.13.2"
+junit = "5.10.2"
+mockitoCore = "5.12.0"
+mockitoKotlin = "5.3.1"
+turbine = "1.1.0"
 junitVersion = "1.2.0"
 espressoCore = "3.6.0"
 lifecycleRuntimeKtx = "2.8.2"
@@ -22,6 +25,11 @@ material = "1.12.0"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 compose = { module = "com.github.bumptech.glide:compose", version.ref = "compose" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
+junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
+mockito-koltin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockitoKotlin" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }

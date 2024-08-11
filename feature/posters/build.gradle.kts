@@ -28,14 +28,14 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 }
 
@@ -72,8 +72,14 @@ dependencies {
     implementation(libs.koin.compose)
 
     // Unit-тестирование
-    testImplementation(libs.junit)
-    implementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.junit.api)
+    testImplementation(libs.junit.engine)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.koltin)
+
+    testImplementation(libs.turbine)
 
     // UI-тестирование
     androidTestImplementation(libs.androidx.junit)
@@ -83,4 +89,8 @@ dependencies {
 
     //Glide
     implementation(libs.compose)
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
