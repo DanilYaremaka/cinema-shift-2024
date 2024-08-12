@@ -1,6 +1,5 @@
-package com.example.cinema_shift_2024.schedule.data.model
+package com.example.shared.data.model.schedule
 
-import com.example.cinema_shift_2024.schedule.shared.data.model.HallName
 import kotlinx.serialization.Serializable
 
 @Serializable

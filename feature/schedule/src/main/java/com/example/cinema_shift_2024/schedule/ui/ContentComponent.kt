@@ -43,7 +43,7 @@ import androidx.compose.ui.unit.sp
 import com.example.cinema_shift_2024.schedule.R
 import com.example.cinema_shift_2024.schedule.domain.entity.FilmSchedule
 import com.example.cinema_shift_2024.schedule.domain.entity.Seance
-import com.example.cinema_shift_2024.schedule.shared.data.model.HallName
+import com.example.shared.data.model.schedule.HallName
 
 
 @OptIn(ExperimentalMaterial3Api::class)

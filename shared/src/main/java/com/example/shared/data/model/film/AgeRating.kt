@@ -1,4 +1,4 @@
-package com.example.shared.data.model
+package com.example.shared.data.model.film
 
 import kotlinx.serialization.Serializable
 
