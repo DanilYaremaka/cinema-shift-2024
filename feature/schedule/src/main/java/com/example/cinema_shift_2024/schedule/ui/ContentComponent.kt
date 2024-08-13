@@ -42,26 +42,37 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cinema_shift_2024.schedule.R
 import com.example.cinema_shift_2024.schedule.domain.entity.FilmSchedule
-import com.example.cinema_shift_2024.schedule.domain.entity.Seance
+import com.example.cinema_shift_2024.schedule.presentation.ScheduleViewModel
 import com.example.shared.data.model.schedule.HallName
+import com.example.shared.data.model.schedule.ScheduleSeance
+import com.example.shared.data.model.schedule.SeanceInfo
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ContentComponent(
     schedules: List<FilmSchedule>,
-    onBackArrowPressed: () -> Unit
+    onBackArrowPressed: () -> Unit,
+    viewModel: ScheduleViewModel
 ) {
     var chosenDateIndex by remember { mutableIntStateOf(0) }
-    var selectedSeance by remember { mutableStateOf<Seance?>(null) }
-
+    var selectedSeance by remember { mutableStateOf<ScheduleSeance?>(null) }
 
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
 
         Button(
-            onClick = { },
+            onClick = {
+                val filmDay = schedules[chosenDateIndex]
+                viewModel.openSelection(
+                SeanceInfo(
+                    date = filmDay.date,
+                    time = selectedSeance!!.time,
+                    hall = selectedSeance!!.hall,
+                    payedTickets = selectedSeance!!.payedTickets
+                )
+            )},
             modifier = Modifier
                 .padding(32.dp)
                 .fillMaxWidth()
@@ -143,9 +154,9 @@ fun ContentComponent(
 @Composable
 fun HallDates(
     hallName: HallName,
-    seances: List<Seance>,
-    selectedSeance: Seance?,
-    onSeanceSelected: (Seance) -> Unit
+    seances: List<ScheduleSeance>,
+    selectedSeance: ScheduleSeance?,
+    onSeanceSelected: (ScheduleSeance) -> Unit
 ) {
 
     HorizontalDivider(
@@ -166,7 +177,7 @@ fun HallDates(
                 .padding(start = 6.dp, end = 6.dp)
         ) {
             for (seance in seances) {
-                if (seance.hall == hallName)
+                if (seance.hall.name == hallName)
                     OutlinedButton(
                         onClick = { onSeanceSelected(seance) },
                         colors = if (selectedSeance == seance) {

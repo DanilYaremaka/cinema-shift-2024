@@ -87,6 +87,12 @@ fun MainScreen() {
                         viewModel = koinViewModel { parametersOf(destination.filmId)}
                     )
                 }
+//                animatedComposable<SelectionRoute> {
+//                    val destination = it.toRoute<SelectionRoute>()
+//                    SelectionScreen(
+//                        //destination.seanceInfo
+//                    )
+//                }
             }
 
             BottomNavigation(

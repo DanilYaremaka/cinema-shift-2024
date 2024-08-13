@@ -2,4 +2,5 @@
 <resources>
     <string name="continue_button">Продолжить</string>
     <string name="schedule_title">Выбор сеанса</string>
+    <string name="choose_to_continue">Выберите сеанс, чтобы продолжить</string>
 </resources>
