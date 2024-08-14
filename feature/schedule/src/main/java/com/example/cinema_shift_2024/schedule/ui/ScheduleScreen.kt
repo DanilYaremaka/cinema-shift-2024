@@ -36,7 +36,7 @@ fun ScheduleScreen(
         is ScheduleState.Content -> ContentComponent(
             schedules = state.schedule,
             onBackArrowPressed = viewModel::goBack,
-            viewModel = viewModel
+            onContinuePress = viewModel::openSelection
         )
     }
 }

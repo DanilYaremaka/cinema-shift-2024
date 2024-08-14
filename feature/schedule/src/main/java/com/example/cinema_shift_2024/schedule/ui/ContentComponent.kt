@@ -42,7 +42,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cinema_shift_2024.schedule.R
 import com.example.cinema_shift_2024.schedule.domain.entity.FilmSchedule
-import com.example.cinema_shift_2024.schedule.presentation.ScheduleViewModel
 import com.example.shared.data.model.schedule.HallName
 import com.example.shared.data.model.schedule.ScheduleSeance
 import com.example.shared.data.model.schedule.SeanceInfo
@@ -53,7 +52,7 @@ import com.example.shared.data.model.schedule.SeanceInfo
 fun ContentComponent(
     schedules: List<FilmSchedule>,
     onBackArrowPressed: () -> Unit,
-    viewModel: ScheduleViewModel
+    onContinuePress: (seanceInfo: SeanceInfo) -> Unit
 ) {
     var chosenDateIndex by remember { mutableIntStateOf(0) }
     var selectedSeance by remember { mutableStateOf<ScheduleSeance?>(null) }
@@ -65,7 +64,7 @@ fun ContentComponent(
         Button(
             onClick = {
                 val filmDay = schedules[chosenDateIndex]
-                viewModel.openSelection(
+                onContinuePress(
                 SeanceInfo(
                     date = filmDay.date,
                     time = selectedSeance!!.time,
