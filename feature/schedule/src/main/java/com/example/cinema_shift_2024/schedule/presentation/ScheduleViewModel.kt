@@ -45,6 +45,6 @@ class ScheduleViewModel(
 
     fun openSelection(seanceInfo: SeanceInfo) {
         Log.d("ScheduleVM", seanceInfo.toString())
-        //router.openSelection(seanceInfo)
+        router.openSelection(seanceInfo)
     }
 }
