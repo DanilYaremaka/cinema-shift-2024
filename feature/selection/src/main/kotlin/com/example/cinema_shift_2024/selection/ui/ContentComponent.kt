@@ -1,16 +1,24 @@
 package com.example.cinema_shift_2024.selection.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -22,12 +30,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.cinema_shift_2024.selection.R
 import com.example.cinema_shift_2024.selection.domain.entity.Seat
+import com.example.shared.data.model.schedule.HallName
 import com.example.shared.data.model.schedule.SeanceInfo
 import com.example.shared.R as sharedR
 
@@ -100,7 +112,104 @@ fun ContentComponent(
                     }
                 }
             )
+
+            PriceList(hallName = seanceInfo.hall.name)
+
+            Text(
+                text = "зал - ${seanceInfo.hall.name}",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(start = 15.dp)
+            )
+
+            ScreenView()
+
         }
+    }
+
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun PriceList(hallName: HallName) {
+
+    val economCost: String
+    val comfortCost: String
+
+    when (hallName) {
+        HallName.Red -> {
+            economCost = stringResource(R.string.econom_red_price)
+            comfortCost = stringResource(R.string.comfort_red_price)
+        }
+
+        HallName.Blue -> {
+            economCost = stringResource(R.string.econom_blue_price)
+            comfortCost = stringResource(R.string.comfort_blue_price)
+        }
+
+        HallName.Green -> {
+            economCost = stringResource(R.string.econom_green_price)
+            comfortCost = stringResource(R.string.comfort_green_price)
+        }
+    }
+
+    FlowRow(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 5.dp, bottom = 10.dp, start = 8.dp),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        maxItemsInEachRow = 2
+    ) {
+
+        SeatPrice(
+            color = ButtonDefaults.buttonColors().disabledContainerColor,
+            text = stringResource(R.string.blocked_string)
+        )
+        SeatPrice(
+            color = Color.Magenta,
+            text = stringResource(R.string.comfort_string, comfortCost)
+        )
+        SeatPrice(
+            color = ButtonDefaults.buttonColors().containerColor,
+            text = stringResource(R.string.econom_string, economCost)
+        )
     }
 }
 
+@Composable
+fun SeatPrice(color: Color, text: String) {
+    Row(
+        modifier = Modifier.padding(end = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            modifier = Modifier
+                .size(20.dp)
+                .clip(CircleShape)
+                .background(
+                    color = color
+                )
+                .padding(end = 4.dp)
+        )
+        Text(
+            text = text,
+            modifier = Modifier.padding(start = 4.dp)
+        )
+    }
+}
+
+
+@Composable
+fun ScreenView() {
+    Text(
+        text = stringResource(R.string.screen),
+        modifier = Modifier.fillMaxWidth(),
+        textAlign = TextAlign.Center
+    )
+    HorizontalDivider(
+        thickness = 2.dp,
+        color = Color.Black,
+        modifier = Modifier
+            .padding(top = 5.dp, bottom = 25.dp, start = 5.dp, end = 5.dp)
+    )
+}
