@@ -2,6 +2,7 @@ package com.example.cinema_shift_2024.selection.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -40,6 +42,8 @@ import androidx.compose.ui.unit.sp
 import com.example.cinema_shift_2024.selection.R
 import com.example.cinema_shift_2024.selection.domain.entity.Seat
 import com.example.shared.data.model.schedule.HallName
+import com.example.shared.data.model.schedule.Place
+import com.example.shared.data.model.schedule.PlaceType
 import com.example.shared.data.model.schedule.SeanceInfo
 import com.example.shared.R as sharedR
 
@@ -124,9 +128,126 @@ fun ContentComponent(
 
             ScreenView()
 
+            SeatsGrid(
+                seats = seanceInfo.hall.places,
+                selectedSeats = selectedSeats,
+                onSeatSelected = { seat ->
+                    if (selectedSeats.contains(seat)) {
+                        selectedSeats = selectedSeats - seat
+                        totalCost -= seat.price
+                    } else {
+                        if (selectedSeats.size < 5) {
+                            selectedSeats = selectedSeats + seat
+                            totalCost += seat.price
+                        }
+                    }
+                }
+            )
         }
     }
 
+}
+
+
+@Composable
+fun SeatsGrid(
+    seats: List<List<Place>>,
+    selectedSeats: List<Seat>,
+    onSeatSelected: (Seat) -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState())
+    ) {
+        Column(
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            for ((rowIndex, row) in seats.withIndex()) {
+                Row(
+                    modifier = Modifier
+                        .padding(4.dp),
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(20.dp)
+                    ) {
+                        Text(
+                            text = "${rowIndex + 1}",
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            textAlign = TextAlign.Center,
+                            fontSize = 12.sp
+                        )
+                    }
+                    for ((columnIndex, seat) in row.withIndex()) {
+
+                        val seatNumbers = Seat(
+                            column = columnIndex + 1,
+                            row = rowIndex + 1,
+                            price = seat.price,
+                            placeType = seat.type
+                        )
+
+                        SeatItem(
+                            selectedSeats = selectedSeats,
+                            onSeatSelected = onSeatSelected,
+                            seat = seatNumbers
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun SeatItem(
+    selectedSeats: List<Seat>,
+    onSeatSelected: (Seat) -> Unit,
+    seat: Seat
+) {
+    Box(modifier = Modifier.size(20.dp)) {
+        val buttonSize = if (selectedSeats.contains(seat) || seat.placeType == PlaceType.BLOCKED)
+            20.dp
+        else
+            15.dp
+
+        Button(
+            onClick = {
+                onSeatSelected(seat)
+            },
+            modifier = Modifier
+                .size(buttonSize)
+                .align(Alignment.Center),
+            colors = when (seat.placeType) {
+                PlaceType.BLOCKED -> ButtonDefaults.buttonColors()
+                PlaceType.ECONOM -> ButtonDefaults.buttonColors()
+                PlaceType.COMFORT -> ButtonDefaults.buttonColors(
+                    containerColor = Color.Magenta,
+                )
+            },
+            enabled = seat.placeType!=PlaceType.BLOCKED
+        ) {
+
+        }
+        if (selectedSeats.contains(seat)) {
+            Text(
+                text = seat.column.toString(),
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .fillMaxWidth(),
+                textAlign = TextAlign.Center,
+                fontSize = 12.sp,
+                color = Color.White
+            )
+        }
+    }
 }
 
 @OptIn(ExperimentalLayoutApi::class)
