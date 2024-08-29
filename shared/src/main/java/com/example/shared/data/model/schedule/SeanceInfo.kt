@@ -4,8 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class SeanceInfo(
-    val date: String,
-    val time: String,
+    val filmId: String,
+    val filmSeance: FilmSeance,
     val payedTickets: List<Ticket>,
     val hall: Hall
 )

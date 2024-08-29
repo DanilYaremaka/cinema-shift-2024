@@ -42,9 +42,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cinema_shift_2024.schedule.R
 import com.example.cinema_shift_2024.schedule.domain.entity.FilmSchedule
+import com.example.shared.data.model.schedule.FilmSeance
 import com.example.shared.data.model.schedule.HallName
 import com.example.shared.data.model.schedule.ScheduleSeance
 import com.example.shared.data.model.schedule.SeanceInfo
+import com.example.shared.R as sharedR
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -66,8 +68,11 @@ fun ContentComponent(
                 val filmDay = schedules[chosenDateIndex]
                 onContinuePress(
                 SeanceInfo(
-                    date = filmDay.date,
-                    time = selectedSeance!!.time,
+                    filmId = "",
+                    filmSeance = FilmSeance(
+                        date = filmDay.date,
+                        time = selectedSeance!!.time
+                    ),
                     hall = selectedSeance!!.hall,
                     payedTickets = selectedSeance!!.payedTickets
                 )
@@ -79,7 +84,7 @@ fun ContentComponent(
             enabled = selectedSeance != null
         ) {
             Text(
-                text = stringResource(R.string.continue_button),
+                text = stringResource(sharedR.string.continue_button),
                 textAlign = TextAlign.Center,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold

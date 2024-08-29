@@ -1,6 +1,5 @@
 package com.example.cinema_shift_2024.schedule.presentation
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cinema_shift_2024.schedule.domain.usecase.GetWeekScheduleUseCase
@@ -44,7 +43,7 @@ class ScheduleViewModel(
     }
 
     fun openSelection(seanceInfo: SeanceInfo) {
-        Log.d("ScheduleVM", seanceInfo.toString())
-        router.openSelection(seanceInfo)
+        val seanceInfoWithId = seanceInfo.copy(filmId = filmId)
+        router.openSelection(seanceInfoWithId)
     }
 }

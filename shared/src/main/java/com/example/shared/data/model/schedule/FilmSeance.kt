@@ -6,4 +6,8 @@ import kotlinx.serialization.Serializable
 data class FilmSeance(
     val date: String,
     val time: String
-)
+) {
+    fun getDateTimeString(): String {
+        return "Время: $time Дата: $date"
+    }
+}
