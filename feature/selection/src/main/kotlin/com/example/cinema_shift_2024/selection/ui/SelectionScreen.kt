@@ -22,7 +22,7 @@ fun SelectionScreen(
         viewModel.getSeanceInfo()
     }
 
-    when(val state = selectionState) {
+    when (val state = selectionState) {
         is SelectionState.Initial,
         is SelectionState.Loading -> LoadingComponent()
 
@@ -34,8 +34,9 @@ fun SelectionScreen(
         )
 
         is SelectionState.Content -> ContentComponent(
-            seanceInfo = state.seanceInfo
+            seanceInfo = state.seanceInfo,
+            onBackArrowPressed = viewModel::goBack,
+            onContinuePressed = viewModel::openUserInfo
         )
     }
-
 }
