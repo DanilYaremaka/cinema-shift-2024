@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="screen">экран</string>
+
+    <string name="econom_red_price">100</string>
+    <string name="econom_blue_price">300</string>
+    <string name="econom_green_price">200</string>
+
+    <string name="comfort_red_price">200</string>
+    <string name="comfort_blue_price">400</string>
+    <string name="comfort_green_price">300</string>
+
+    <string name="blocked_string"> недоступно</string>
+    <string name="comfort_string">"комфорт %1$s руб"</string>
+    <string name="econom_string">"эконом %1$s руб"</string>
+</resources>

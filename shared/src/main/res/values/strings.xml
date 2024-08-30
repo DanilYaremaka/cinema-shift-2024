@@ -5,4 +5,6 @@
     <string name="error_unknown_error">Неизвестная ошибка</string>
     <string name="fail_to_load_image">Ошибка при загрузке</string>
     <string name="unknown_country">Страна неизвестна</string>
+
+    <string name="continue_button">Продолжить</string>
 </resources>

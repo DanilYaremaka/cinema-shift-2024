@@ -1,8 +1,9 @@
 package com.example.cinema_shift_2024.details.data.converter
 
 import com.example.cinema_shift_2024.details.domain.entity.Details
-import com.example.shared.data.model.FilmModel
-import com.example.shared.data.model.FilmPerson
+import com.example.shared.data.model.film.FilmModel
+import com.example.shared.data.model.film.FilmPerson
+import com.example.shared.data.model.film.UserRatings
 
 class DetailsConverter(private val baseUrl: String) {
 
@@ -12,7 +13,7 @@ class DetailsConverter(private val baseUrl: String) {
             name = model.name,
             runtime = model.runtime,
             ageRating = model.ageRating.name,
-            userRatings = com.example.shared.data.model.UserRatings(
+            userRatings = UserRatings(
                 kinopoisk = model.userRatings.kinopoisk,
                 imdb = model.userRatings.imdb
             ),

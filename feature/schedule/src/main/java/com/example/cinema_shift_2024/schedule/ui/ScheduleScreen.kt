@@ -22,8 +22,6 @@ fun ScheduleScreen(
         viewModel.loadSchedule()
     }
 
-
-
     when(val state = scheduleState) {
         is ScheduleState.Initial,
         is ScheduleState.Loading -> LoadingComponent()
@@ -37,7 +35,8 @@ fun ScheduleScreen(
 
         is ScheduleState.Content -> ContentComponent(
             schedules = state.schedule,
-            onBackArrowPressed = viewModel::goBack
+            onBackArrowPressed = viewModel::goBack,
+            onContinuePress = viewModel::openSelection
         )
     }
 }

@@ -3,6 +3,7 @@ package com.example.cinema_shift_2024.schedule.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cinema_shift_2024.schedule.domain.usecase.GetWeekScheduleUseCase
+import com.example.shared.data.model.schedule.SeanceInfo
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -11,7 +12,7 @@ import kotlin.coroutines.cancellation.CancellationException
 class ScheduleViewModel(
     private val router: ScheduleRouter,
     private val filmId: String,
-    private val getWeekScheduleUseCase: GetWeekScheduleUseCase
+    private val getWeekScheduleUseCase: GetWeekScheduleUseCase,
 ): ViewModel() {
 
     private val _state = MutableStateFlow<ScheduleState>(ScheduleState.Initial)
@@ -39,5 +40,10 @@ class ScheduleViewModel(
 
     fun goBack() {
         router.goBack()
+    }
+
+    fun openSelection(seanceInfo: SeanceInfo) {
+        val seanceInfoWithId = seanceInfo.copy(filmId = filmId)
+        router.openSelection(seanceInfoWithId)
     }
 }

@@ -34,6 +34,8 @@ import com.example.cinema_shift_2024.navigation.NavControllerHolder
 import com.example.cinema_shift_2024.posters.ui.PostersScreen
 import com.example.cinema_shift_2024.schedule.ScheduleRoute
 import com.example.cinema_shift_2024.schedule.ui.ScheduleScreen
+import com.example.cinema_shift_2024.selection.SelectionRoute
+import com.example.cinema_shift_2024.selection.ui.SelectionScreen
 import com.example.cinema_shift_2024.tickets.TicketsRoute
 import com.example.cinema_shift_2024.tickets.ui.TicketsScreen
 import org.koin.androidx.compose.koinViewModel
@@ -85,6 +87,12 @@ fun MainScreen() {
                     val destination = it.toRoute<ScheduleRoute>()
                     ScheduleScreen(
                         viewModel = koinViewModel { parametersOf(destination.filmId)}
+                    )
+                }
+                animatedComposable<SelectionRoute> {
+                    val destination = it.toRoute<SelectionRoute>()
+                    SelectionScreen(
+                        viewModel = koinViewModel { parametersOf(destination.seanceInfo)}
                     )
                 }
             }
