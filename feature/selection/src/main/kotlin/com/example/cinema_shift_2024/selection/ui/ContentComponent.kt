@@ -53,7 +53,7 @@ import com.example.shared.R as sharedR
 fun ContentComponent(
     seanceInfo: SeanceInfo,
     onBackArrowPressed: () -> Unit,
-    onContinuePressed: (seanceInfo: SeanceInfo, selectedSeats: List<Seat>, totalCost: Int) -> Unit
+    onContinuePressed: (seanceInfo: SeanceInfo, selectedSeats: List<SeatNumbers>) -> Unit
 ) {
 
     var selectedSeats by remember { mutableStateOf(listOf<Seat>()) }
@@ -64,7 +64,7 @@ fun ContentComponent(
 
         Button(
             onClick = {
-                onContinuePressed(seanceInfo, selectedSeats, totalCost)
+                onContinuePressed(seanceInfo, selectedSeats.map { it.seatNumbers })
             },
             modifier = Modifier
                 .padding(32.dp)

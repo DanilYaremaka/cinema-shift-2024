@@ -2,9 +2,9 @@ package com.example.cinema_shift_2024.selection.presentation
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.cinema_shift_2024.selection.domain.entity.Seat
 import com.example.cinema_shift_2024.selection.domain.usecase.ParseSeanceUseCase
 import com.example.shared.data.model.schedule.SeanceInfo
+import com.example.shared.data.model.schedule.SeatNumbers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -31,7 +31,7 @@ class SelectionViewModel(
         router.goBack()
     }
 
-    fun openUserInfo(seanceInfo: SeanceInfo, selectedSeats: List<Seat>, totalCost: Int) {
-        Log.d("Selection", "$seanceInfo\n $selectedSeats\n $totalCost")
+    fun openUserInfo(seanceInfo: SeanceInfo, selectedSeats: List<SeatNumbers>) {
+        Log.d("Selection", "$seanceInfo\n $selectedSeats")
     }
 }
