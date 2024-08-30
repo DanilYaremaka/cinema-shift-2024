@@ -45,6 +45,7 @@ import com.example.shared.data.model.schedule.HallName
 import com.example.shared.data.model.schedule.Place
 import com.example.shared.data.model.schedule.PlaceType
 import com.example.shared.data.model.schedule.SeanceInfo
+import com.example.shared.data.model.schedule.SeatNumbers
 import com.example.shared.R as sharedR
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -188,8 +189,9 @@ fun SeatsGrid(
                     for ((columnIndex, seat) in row.withIndex()) {
 
                         val seatNumbers = Seat(
-                            column = columnIndex + 1,
-                            row = rowIndex + 1,
+                            seatNumbers = SeatNumbers(
+                                column = columnIndex + 1,
+                                row = rowIndex + 1),
                             price = seat.price,
                             placeType = seat.type
                         )
@@ -238,7 +240,7 @@ fun SeatItem(
         }
         if (selectedSeats.contains(seat)) {
             Text(
-                text = seat.column.toString(),
+                text = seat.seatNumbers.column.toString(),
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .fillMaxWidth(),
