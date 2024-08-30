@@ -3,7 +3,7 @@ package com.example.shared.data.model.schedule
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class FilmSeance(
+data class TicketSeance(
     val date: String,
     val time: String
 ) {

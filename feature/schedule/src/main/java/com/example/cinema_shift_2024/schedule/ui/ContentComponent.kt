@@ -42,10 +42,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cinema_shift_2024.schedule.R
 import com.example.cinema_shift_2024.schedule.domain.entity.FilmSchedule
-import com.example.shared.data.model.schedule.FilmSeance
 import com.example.shared.data.model.schedule.HallName
 import com.example.shared.data.model.schedule.ScheduleSeance
 import com.example.shared.data.model.schedule.SeanceInfo
+import com.example.shared.data.model.schedule.TicketSeance
 import com.example.shared.R as sharedR
 
 
@@ -69,7 +69,7 @@ fun ContentComponent(
                 onContinuePress(
                 SeanceInfo(
                     filmId = "",
-                    filmSeance = FilmSeance(
+                    ticketSeance = TicketSeance(
                         date = filmDay.date,
                         time = selectedSeance!!.time
                     ),

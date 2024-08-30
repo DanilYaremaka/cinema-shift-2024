@@ -7,6 +7,6 @@ data class Ticket(
     val filmId: String,
     val row: Int,
     val column: Int,
-    val seance: FilmSeance,
+    val seance: TicketSeance,
     val phone: String
 )

@@ -110,7 +110,7 @@ fun ContentComponent(
                                 .padding(end = 8.dp)
                         )
                         Text(
-                            text = seanceInfo.filmSeance.getDateTimeString(),
+                            text = seanceInfo.ticketSeance.getDateTimeString(),
                             fontWeight = FontWeight.ExtraBold,
                             textAlign = TextAlign.Center,
                         )
