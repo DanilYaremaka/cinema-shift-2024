@@ -1,6 +1,5 @@
 package com.example.cinema_shift_2024.selection.presentation
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.cinema_shift_2024.selection.domain.usecase.ParseSeanceUseCase
 import com.example.shared.data.model.schedule.SeanceInfo
@@ -32,6 +31,6 @@ class SelectionViewModel(
     }
 
     fun openUserInfo(seanceInfo: SeanceInfo, selectedSeats: List<SeatNumbers>) {
-        Log.d("Selection", "$seanceInfo\n $selectedSeats")
+        router.openUserInfo(seanceInfo, selectedSeats)
     }
 }

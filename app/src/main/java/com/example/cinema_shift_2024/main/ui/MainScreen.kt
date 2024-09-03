@@ -38,6 +38,8 @@ import com.example.cinema_shift_2024.selection.SelectionRoute
 import com.example.cinema_shift_2024.selection.ui.SelectionScreen
 import com.example.cinema_shift_2024.tickets.TicketsRoute
 import com.example.cinema_shift_2024.tickets.ui.TicketsScreen
+import com.example.cinema_shift_2024.userInfo.UserInfoRoute
+import com.example.cinema_shift_2024.userInfo.ui.UserInfoScreen
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
@@ -93,6 +95,13 @@ fun MainScreen() {
                     val destination = it.toRoute<SelectionRoute>()
                     SelectionScreen(
                         viewModel = koinViewModel { parametersOf(destination.seanceInfo)}
+                    )
+                }
+                animatedComposable<UserInfoRoute> {
+                    val destination = it.toRoute<UserInfoRoute>()
+                    UserInfoScreen(
+                        seanceInfoJson = destination.seanceInfo,
+                        selectedSeatsJson = destination.selectedSeats
                     )
                 }
             }
